@@ -14,6 +14,8 @@ import org.junit.runner.RunWith;
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
+import static org.hamcrest.number.OrderingComparison.greaterThan;
+import static org.junit.Assert.assertThat;
 
 @RunWith(AndroidJUnit4.class)
 public class MainActivityTest {
@@ -34,7 +36,8 @@ public class MainActivityTest {
     public void testIfJokesAreFetched() {
         onView(withId(R.id.tell_joke_btn)).perform(click());
 
-        assert mActivityTestRule.getActivity().getJokesResponse().length() > 0;
+        assertThat("Response", mActivityTestRule.getActivity().getJokesResponse().length(),
+                greaterThan(0));
     }
 
     // unregister resources when not needed.

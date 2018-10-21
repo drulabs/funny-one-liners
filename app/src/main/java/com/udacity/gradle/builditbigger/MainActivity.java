@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
     @VisibleForTesting
     @NonNull
     public String getJokesResponse() {
-        return jokesResult;
+        return jokesResult == null ? "" : jokesResult;
     }
 
     private View mainLayout;
